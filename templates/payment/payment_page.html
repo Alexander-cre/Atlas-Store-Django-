@@ -1,0 +1,18 @@
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+    form{
+        border : 1px solid #000 ;
+        display:  block ;
+        width: 80% !important;
+        height: 80vh ;
+        margin: 0 auto 0 auto !important;
+    }
+</style>
+<!-- your_template.html -->
+<form method="POST" action="{% url 'paystack_payment' %}">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Pay Now</button>
+</form>

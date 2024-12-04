@@ -1,0 +1,71 @@
+*{ box-sizing: border-box;}         /*specifies the behaviour of the dimension of the box */
+.slider{                            /*styling for the slider container */
+    margin : 0 auto 0 auto ;
+    position : relative ;
+}
+.Slider{            
+    margin-top : 30px;              /* specifying the actual slider but using the case sensitivity */        
+    width : auto;
+    text-align: center;
+    cursor :grab;
+    overflow: hidden;
+}
+.slides{
+    display:flex;
+    text-align: center;
+    overflow-x: auto;
+    border : 1px solid #fff;
+    scrollbar-width: 300px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior:smooth;              /* specify whether to use native scrollin in ans overflowing element */
+}
+.slides::-webkit-scrollbar{width : 10px; height: 10px;}
+.slides::-webkit-scrollbar-thumb{ background: white; border-radius: 10px;}
+.slides::-webkit-scrollbar-track{ background : transparent;}
+.slides > .slideProdCard{ 
+scroll-snap-align:center;   /* this is the main value scroll-snap-align which will align the contents to the center just like the carousel used in the portfolio */
+flex-shrink: 0;         /* responsiible for shringking the contents*/
+margin-right: 20px;        
+border-radius: 10px; 
+transform-origin: center;       /* not necessary  but still valuable */
+transform: scale(1);            /* not necessary  but still valuable */
+transition: ease 0.5s;          /* not necessary  but still valuable */ 
+position: center;           /* responsible for aligning the contents inside the cards */
+justify-content: center;    /* responsible for aligning the contents inside the cards */
+ align-items: center;       /* responsible for aligning the contents inside the cards */
+}
+::-webkit-scrollbar-thumb{
+    background: #fff;
+}
+
+.prodSLides{
+    border : 1px solid #000 ;
+    margin-top: 10px ; 
+    height: auto !important;
+    padding: 5px ;
+    width: 100%;
+    padding: 5px;
+}
+.slideProdCard{
+    width: 250px ;
+    height: 350px !important ;
+    border : 1px solid red ;
+}
+.slideProdCard .img{
+    width: 100% !important;
+    height: 70% !important;
+    border : 1px solid #000;
+}
+/* .slideProdCard .slideCardInfo{
+    height: 10% ;
+    text-align: center !important;
+    width: 100%;
+    border : 1px solid green ;
+    padding : 0px ;
+} */
+.slideProdCard .img img{
+    width: 100% ;
+    height: 100% ;
+    object-fit: cover;
+    object-position: center top;
+}

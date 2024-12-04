@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3498db; /* Button color */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: none; /* Hidden by default */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+}
+
+
+        .innerBoxInfo{
+            display:  block ;
+            width: 80% !important ;
+            padding : 5px ;
+            margin-top: 10% !important;
+        }
+        .hero{
+            width: 100% ;
+            height: 600px !important;
+            display: block ;
+        }
+        .imgBox img{
+            width: 100% ;
+            height: 100% ;
+            object-fit: contain ;
+            object-position: center ;
+            z-index: 40 !important ;
+        }
+        .imgBox{
+            height: 450px;
+            width: 500px !important ;
+            position: absolute ;
+            right : 80px !important;
+            top : 35px !important;
+            z-index: 40 !important;
+        }
+        .textInfo{
+            display: block ;
+            height: 550px !important;
+            position: absolute ;
+            top : 100px !important;
+            left: 150px !important;
+            z-index: 99 !important;
+        }
+        @media screen and (max-width : 800px ) {
+            .textInfo{
+                left: 20px !important;
+                font-size: medium !important;
+            }
+            .imgBox{
+                width: 350px !important ;
+                height: 350px !important;
+            }            
+            .innerBoxInfo{
+                margin-top: 25% !important;
+            }
+        }
+        @media screen and (max-width : 500px ) {
+            .imgBox{
+                width: 100% !important;
+                height: 80% !important;
+                right: 0px !important;
+                top : 0px !important;
+            }
+            .innerBoxInfo{
+                margin-top: 20% !important;
+            }
+            .cartIcon{
+                right: 10px ;
+            }
+            .logo{
+                left: 7px;
+            }
+        }
+
+        /* Preloader
+-------------------------------------------------------*/
+
+
+.floating-box {
+    animation: float 3s ease-in-out infinite; /* Animation */
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+    0% {
+        transform: translate(0, 0); /* Start position */
+    }
+    25% {
+        transform: translate(0, -20px); /* Move up */
+    }
+    50% {
+        transform: translate(20px, 20px); /* Move down and to the right */
+    }
+    75% {
+        transform: translate(-20px, 0); /* Move back to the left */
+    }
+    100% {
+        transform: translate(0, 0); /* Return to start */
+    }
+}
+
+.loader-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 99999;
+}
+
+/* Preloader styles */
+.loader-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff; /* Background color of the preloader */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Make sure it is on top of everything */
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader div {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: #3498db; /* Loader color */
+    animation: loader-animation 0.6s infinite alternate;
+}
+
+.loader div:nth-child(2) {
+    animation-delay: 0.3s; /* Delay for the second circle */
+}
+
+/* Keyframes for loader animation */
+@keyframes loader-animation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+        .logo{
+            width: 220px ;
+            height: 50px ;
+            position:  absolute ;
+            left: 40px ;
+            top : 15px ;
+            position: fixed ;
+            z-index: 99 ;
+        }
+        .logo img{
+            width: 100% ;
+            height: 100% ;
+            object-fit: contain ;
+            object-position: center ;
+        }
+        .cartIcon{
+            width: 40px ;
+            height: 40px ;
+            display: block ;
+            position: absolute ;
+            right: 40px !important ;
+            top : 15px !important ;
+            cursor: pointer ;
+            position: fixed ;
+        }
+    </style>
+
+
+</head>
+
+<body style="background-color: #1c1f2e ; color : #fff ;">
+    
+<div class="loader-mask">
+    <div class="loader">
+        <img src="{% static 'images/preloader.gif' %}" alt='/' />
+    </div>
+</div>
+    <div class="">
+        <a class="backshadow background-drop blur " href="/">
+            <h2 class="logo "> 
+                <IMG src="{% static 'images/LOGO.svg' %}"   alt="/" />
+            </h2>
+        </a>
+        <a class="cartIcon" href="cart/">
+            <img src="{% static 'images/wallet-svgrepo-com.svg' %}" alt="/" />
+        </a>
+    </div>
+    <section class="  hero text-white-800 mb-12" >
+        <div class="textInfo w-3/5 font-[sans-serif]">
+            <div class="innerBoxInfo">
+                <h2 class="text-4xl font-extrabold text-white-800 mb-5">
+                    Find the Right Gadget that spurs your Passion
+                </h2>
+                <p class="text-base mb-5"> Browse combinations of storage Gadgets, Sci-Fi Gadgets , Security , AI Robots , Rcs ,and much more in our Easy and User friendly Store 😎. </p>
+            
+                <button class="bg-yellow-600 p-4 rounded-md text-white">
+                    Shop Now 🤖
+                </button>
+            </div>
+
+        </div>
+        <div class="imgBox floating-box">
+            <img src="{% static 'images/Drone.png' %}" alt="/" />
+        </div>
+    </section>
+
+    
+    <div class="font-[sans-serif] py-4 mx-auto lg:max-w-6xl max-w-lg md:max-w-full md:p-5">
+        <h2 class="text-2xl font-bold text-white-800 mb-12 p-5">All Products 😊</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for product in products %}
+            <form class="bg-white rounded-xl cursor-pointer hover:scale-[1.03] transition-all relative overflow-hidden" 
+                  action="{% url 'cart:add_to_cart' product.id %}" 
+                  method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                
+                <div class="p-6">
+
+                    <div class="w-2/3 h-[220px] overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+                        <img style="object-fit: cover;object-position: center top; width: 100% ; height: 100% ;" src="{{ product.Image }}" alt="/" class="h-full w-full object-contain" />
+                    </div>white
+                </div>
+                <div class="text-center bg-gray-100 p-6">
+                    <h3 class="text-lg font-bold text-gray-800 truncate">{{ product.name }}</h3>
+                    <h4 class="text-lg text-gray-800 font-bold mt-6">${{ product.price }}</h4>
+                    <button type="submit" class="w-full flex items-center justify-center gap-3 mt-6 px-6 py-3 bg-yellow-400 text-base text-gray-800 font-semibold rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 512 512">
+                            <path d="..."></path> <!-- Your SVG path here -->
+                        </svg>
+                        Add to cart
+                    </button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+
+        <a href="#" class="back-to-top" id="backToTop">🔼</a>
+        
+
+    </div>
+
+
+
+  
+  <footer class="bg-gray-900 text-white shadow-2xl text-center p-10 ">
+    <h3 class="text-2xl font-bold mb-12"> Atlas Store </h3>
+    <span class="italic"> copyright 2024 © By Alexander 😎👑</span>
+  </footer>
+  <script>
+
+        // Show the preloader for 5 seconds
+        window.addEventListener('load', function() {
+        const loader = document.querySelector('.loader-mask');
+        setTimeout(function() {
+            loader.style.display = 'none'; // Hide the preloader after 2 seconds
+        }, 2000); // 5000 milliseconds = 2 seconds
+    });
+
+    // Show the button when scrolling down
+    window.onscroll = function() {
+        const backToTopButton = document.getElementById("backToTop");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    // Scroll to top when the button is clicked
+    document.getElementById("backToTop").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

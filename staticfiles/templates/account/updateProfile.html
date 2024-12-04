@@ -1,0 +1,36 @@
+{% extends "base/base.html"%} {% block start %}
+<div id="addAddressModal" class="modal">
+    <div class="modal-content">
+        <h2>Update Profile</h2>
+        <form id="addAddressForm" onsubmit="saveAddress(event)" method="POST">
+            {% csrf_token %}
+            <div class="col-12 d-flex main_flex_div">
+
+                <div class="col-4 d-flex flex-column inner_flex_div">
+                    <label for="name">Information</label>
+                    {{ user_form.as_p }}
+                </div>
+                <div class="col-4 d-flex flex-column inner_flex_div">
+                    <label for="name">Information</label>
+                    {{ profile_form.as_p }}
+                </div>
+
+            </div>
+             <div class="col-12 d-flex button_div">
+             <button type="submit">save changes</button>
+            </div>
+            
+            
+        </form>
+    </div>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for messages in messages %}
+        <li> {{ messages }}</li>
+    {% endfor %}    
+</ul>
+{% endif %}
+
+{% endblock %}
